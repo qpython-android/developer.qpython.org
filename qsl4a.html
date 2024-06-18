@@ -1,0 +1,1923 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for QPython's QSL4A API"
+        >
+    <title>QSL4A API Documentation</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-06521708.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-88f539c5.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b12a2749.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="qsl4a" data-languages="[&quot;python&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <center><img src="images/logo-96d18de3.png" class="logo" alt="" /></center>
+        <div class="lang-selector">
+              <a href="#" data-language-name="python">python</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#01-androidfacade" class="toc-h1 toc-link" data-title="01 AndroidFacade">01 AndroidFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0101-clipboard-apis" class="toc-h2 toc-link" data-title="0101 Clipboard APIs">0101 Clipboard APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0102-intent-amp-startactivity-apis" class="toc-h2 toc-link" data-title="0102 Intent &amp; startActivity APIs">0102 Intent &amp; startActivity APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0103-sendbroadcast-apis" class="toc-h2 toc-link" data-title="0103 SendBroadcast APIs">0103 SendBroadcast APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0104-vibrate" class="toc-h2 toc-link" data-title="0104 Vibrate">0104 Vibrate</a>
+                  </li>
+                  <li>
+                    <a href="#0105-networkstatus" class="toc-h2 toc-link" data-title="0105 NetworkStatus">0105 NetworkStatus</a>
+                  </li>
+                  <li>
+                    <a href="#0106-packageversion-apis" class="toc-h2 toc-link" data-title="0106 PackageVersion APIs">0106 PackageVersion APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0107-system-apis" class="toc-h2 toc-link" data-title="0107 System APIs">0107 System APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0108-sendemail" class="toc-h2 toc-link" data-title="0108 SendEmail">0108 SendEmail</a>
+                  </li>
+                  <li>
+                    <a href="#0109-toast-getinput-getpassword-notify-apis" class="toc-h2 toc-link" data-title="0109 Toast, getInput, getPassword, notify APIs">0109 Toast, getInput, getPassword, notify APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#02-applicationmanagerfacade" class="toc-h1 toc-link" data-title="02 ApplicationManagerFacade">02 ApplicationManagerFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0201-manager-apis" class="toc-h2 toc-link" data-title="0201 Manager APIs">0201 Manager APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#03-camerafacade" class="toc-h1 toc-link" data-title="03 CameraFacade">03 CameraFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0301-camera-apis" class="toc-h2 toc-link" data-title="0301 Camera APIs">0301 Camera APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#04-commonintentsfacade" class="toc-h1 toc-link" data-title="04 CommonIntentsFacade">04 CommonIntentsFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0401-barcode-apis" class="toc-h2 toc-link" data-title="0401 Barcode APIs">0401 Barcode APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0402-view-apis" class="toc-h2 toc-link" data-title="0402 View APIs">0402 View APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#05-contactsfacade" class="toc-h1 toc-link" data-title="05 ContactsFacade">05 ContactsFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0501-contacts-apis" class="toc-h2 toc-link" data-title="0501 Contacts APIs">0501 Contacts APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#06-eventfacade" class="toc-h1 toc-link" data-title="06 EventFacade">06 EventFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0601-event-apis" class="toc-h2 toc-link" data-title="0601 Event APIs">0601 Event APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#07-locationfacade" class="toc-h1 toc-link" data-title="07 LocationFacade">07 LocationFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0701-providers-apis" class="toc-h2 toc-link" data-title="0701 Providers APIs">0701 Providers APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0702-location-apis" class="toc-h2 toc-link" data-title="0702 Location APIs">0702 Location APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0703-geo" class="toc-h2 toc-link" data-title="0703 GEO">0703 GEO</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#08-phonefacade" class="toc-h1 toc-link" data-title="08 PhoneFacade">08 PhoneFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0801-phonestat-apis" class="toc-h2 toc-link" data-title="0801 PhoneStat APIs">0801 PhoneStat APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0802-call-amp-dia-apis" class="toc-h2 toc-link" data-title="0802 Call &amp; Dia APIs">0802 Call &amp; Dia APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0803-get-information-apis" class="toc-h2 toc-link" data-title="0803 Get information APIs">0803 Get information APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#09-mediarecorderfacade" class="toc-h1 toc-link" data-title="09 MediaRecorderFacade">09 MediaRecorderFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0901-audio" class="toc-h2 toc-link" data-title="0901 Audio">0901 Audio</a>
+                  </li>
+                  <li>
+                    <a href="#0902-video-apis" class="toc-h2 toc-link" data-title="0902 Video APIs">0902 Video APIs</a>
+                  </li>
+                  <li>
+                    <a href="#0903-stop" class="toc-h2 toc-link" data-title="0903 Stop">0903 Stop</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#10-sensormanagerfacade" class="toc-h1 toc-link" data-title="10 SensorManagerFacade">10 SensorManagerFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1001-start-amp-stop" class="toc-h2 toc-link" data-title="1001 Start &amp; Stop">1001 Start &amp; Stop</a>
+                  </li>
+                  <li>
+                    <a href="#1002-read-data-apis" class="toc-h2 toc-link" data-title="1002 Read data APIs">1002 Read data APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#11-settingsfacade" class="toc-h1 toc-link" data-title="11 SettingsFacade">11 SettingsFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1101-screen" class="toc-h2 toc-link" data-title="1101 Screen">1101 Screen</a>
+                  </li>
+                  <li>
+                    <a href="#1102-airplanermode" class="toc-h2 toc-link" data-title="1102 AirplanerMode">1102 AirplanerMode</a>
+                  </li>
+                  <li>
+                    <a href="#1103-ringer-silent-mode" class="toc-h2 toc-link" data-title="1103 Ringer Silent Mode">1103 Ringer Silent Mode</a>
+                  </li>
+                  <li>
+                    <a href="#1104-vibrate-mode" class="toc-h2 toc-link" data-title="1104 Vibrate Mode">1104 Vibrate Mode</a>
+                  </li>
+                  <li>
+                    <a href="#1105-ringer-amp-media-volume" class="toc-h2 toc-link" data-title="1105 Ringer &amp; Media Volume">1105 Ringer &amp; Media Volume</a>
+                  </li>
+                  <li>
+                    <a href="#1105-screen-brightness" class="toc-h2 toc-link" data-title="1105 Screen Brightness">1105 Screen Brightness</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#12-smsfacade" class="toc-h1 toc-link" data-title="12 SmsFacade">12 SmsFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1201-sms-api" class="toc-h2 toc-link" data-title="1201 Sms API">1201 Sms API</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#13-speechrecognitionfacade" class="toc-h1 toc-link" data-title="13 SpeechRecognitionFacade">13 SpeechRecognitionFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1301-speech-api" class="toc-h2 toc-link" data-title="1301 Speech API">1301 Speech API</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#14-tonegeneratorfacade" class="toc-h1 toc-link" data-title="14 ToneGeneratorFacade">14 ToneGeneratorFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1401-tones-api" class="toc-h2 toc-link" data-title="1401 Tones API">1401 Tones API</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#15-wakelockfacade" class="toc-h1 toc-link" data-title="15 WakeLockFacade">15 WakeLockFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1501-wake-api" class="toc-h2 toc-link" data-title="1501 Wake API">1501 Wake API</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#16-wififacade" class="toc-h1 toc-link" data-title="16 WifiFacade">16 WifiFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1601-wifi-apis" class="toc-h2 toc-link" data-title="1601 Wifi APIs">1601 Wifi APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#18-batterymanagerfacade" class="toc-h1 toc-link" data-title="18 BatteryManagerFacade">18 BatteryManagerFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1801-battery-apis" class="toc-h2 toc-link" data-title="1801 Battery APIs">1801 Battery APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#19-activityresultfacade" class="toc-h1 toc-link" data-title="19 ActivityResultFacade">19 ActivityResultFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1901-activity-apis" class="toc-h2 toc-link" data-title="1901 Activity APIs">1901 Activity APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#20-mediaplayerfacade" class="toc-h1 toc-link" data-title="20 MediaPlayerFacade">20 MediaPlayerFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2001-control" class="toc-h2 toc-link" data-title="2001 Control">2001 Control</a>
+                  </li>
+                  <li>
+                    <a href="#2002-get-information" class="toc-h2 toc-link" data-title="2002 Get Information">2002 Get Information</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#21-preferencesfacade" class="toc-h1 toc-link" data-title="21 PreferencesFacade">21 PreferencesFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#preferences-apis" class="toc-h2 toc-link" data-title="Preferences APIs">Preferences APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#22-qpyinterfacefacade" class="toc-h1 toc-link" data-title="22 QPyInterfaceFacade">22 QPyInterfaceFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2201-qpyinterface-apis" class="toc-h2 toc-link" data-title="2201 QPyInterface APIs">2201 QPyInterface APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#23-texttospeechfacade" class="toc-h1 toc-link" data-title="23 TextToSpeechFacade">23 TextToSpeechFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2301-tts-apis" class="toc-h2 toc-link" data-title="2301 TTS APIs">2301 TTS APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#24-eyesfreefacade" class="toc-h1 toc-link" data-title="24 EyesFreeFacade">24 EyesFreeFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2401-eyesfree-apis" class="toc-h2 toc-link" data-title="2401 EyesFree APIs">2401 EyesFree APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#25-bluetoothfacade" class="toc-h1 toc-link" data-title="25 BluetoothFacade">25 BluetoothFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2501-bluetooth-apis" class="toc-h2 toc-link" data-title="2501 Bluetooth APIs">2501 Bluetooth APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#26-signalstrengthfacade" class="toc-h1 toc-link" data-title="26 SignalStrengthFacade">26 SignalStrengthFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2601-signalstreagth-apis" class="toc-h2 toc-link" data-title="2601 SignalStreagth APIs">2601 SignalStreagth APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#27-webcamfacade" class="toc-h1 toc-link" data-title="27 WebCamFacade">27 WebCamFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2701-webcam-apis" class="toc-h2 toc-link" data-title="2701 WebCam APIs">2701 WebCam APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#28-uifacade" class="toc-h1 toc-link" data-title="28 UiFacade">28 UiFacade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2801-dialog" class="toc-h2 toc-link" data-title="2801 Dialog">2801 Dialog</a>
+                  </li>
+                  <li>
+                    <a href="#2802-nfc" class="toc-h2 toc-link" data-title="2802 NFC">2802 NFC</a>
+                  </li>
+                  <li>
+                    <a href="#2803-progress" class="toc-h2 toc-link" data-title="2803 Progress">2803 Progress</a>
+                  </li>
+                  <li>
+                    <a href="#2804-alert" class="toc-h2 toc-link" data-title="2804 Alert">2804 Alert</a>
+                  </li>
+                  <li>
+                    <a href="#2805-dialog-control" class="toc-h2 toc-link" data-title="2805 Dialog Control">2805 Dialog Control</a>
+                  </li>
+                  <li>
+                    <a href="#2806-layout" class="toc-h2 toc-link" data-title="2806 Layout">2806 Layout</a>
+                  </li>
+                  <li>
+                    <a href="#2807-webview" class="toc-h2 toc-link" data-title="2807 WebView">2807 WebView</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#29-usb-host-serial-facade" class="toc-h1 toc-link" data-title="29 USB Host Serial Facade">29 USB Host Serial Facade</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#requirements" class="toc-h2 toc-link" data-title="Requirements">Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#2901-usb-host-serial-apis" class="toc-h2 toc-link" data-title="2901 USB Host Serial APIs">2901 USB Host Serial APIs</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li></li>
+        </ul>
+
+      <div style="padding:60px">
+
+      <!--<img src="images/qrcode_for_apigpt-723fccb3.jpg" class="logo" alt="" />
+      <p style="color:grey">扫描关注<br />生成式AI云公众号</p>
+
+      <img src="images/apigpt-contact-e412e752.png" class="logo" alt="" />
+      <p style="color:grey">扫描加入<br />生成式AI用户群</p>-->
+      </div>
+
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <p>The Scripting Layer for Android (abridged as SL4A, and previously named Android Scripting Environment or ASE) is a library that allows the creation and running of scripts written in various scripting languages directly on Android devices. QPython start to extend the SL4A project and integrate it.</p>
+
+<p>There are many SL4A APIs, if you found any issue, please <code>report an issue &lt;https://github.com/qpython-android/qpython/issues&gt;</code>_.</p>
+<h1 id='01-androidfacade'>01 AndroidFacade</h1><h2 id='0101-clipboard-apis'>0101 Clipboard APIs</h2><h3 id='setclipboard-text'>setClipboard(text)</h3>
+<p>Put text in the clipboard</p>
+
+<p>:param str text: text</p>
+<h3 id='getclipboard'>getClipboard()</h3>
+<p>Read text from the clipboard</p>
+
+<p>:return: The text in the clipboard</p>
+
+<blockquote>
+<p>Please run below script within your QPython</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code>
+    <span class="kn">from</span> <span class="nn">androidhelper</span> <span class="kn">import</span> <span class="n">Android</span>
+    <span class="n">droid</span> <span class="o">=</span> <span class="n">Android</span><span class="p">()</span>
+
+    <span class="c1">#setClipboard
+</span>    <span class="n">droid</span><span class="p">.</span><span class="n">setClipboard</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">)</span>
+
+    <span class="c1">#getClipboard
+</span>    <span class="n">clipboard</span> <span class="o">=</span> <span class="n">droid</span><span class="p">.</span><span class="n">getClipboard</span><span class="p">().</span><span class="n">result</span>
+</code></pre></div><h2 id='0102-intent-amp-startactivity-apis'>0102 Intent &amp; startActivity APIs</h2><h3 id='makeintent-action-uri-type-extras-categories-packagename-classname-flags'>makeIntent(action, uri, type, extras, categories, packagename, classname, flags)</h3>
+<p>Starts an activity and returns the result</p>
+
+<p>:param str action: action
+   :param str uri(Optional): uri
+   :param str type(Optional): MIME type/subtype of the URI
+   :param object extras(Optional): a Map of extras to add to the Intent
+   :param list categories(Optional): a List of categories to add to the Intent
+   :param str packagename(Optional): name of package. If used, requires classname to be useful
+   :param str classname(Optional): name of class. If used, requires packagename to be useful
+   :param int flags(Optional): Intent flags</p>
+
+<p>:return: An object representing an Intent</p>
+
+<blockquote>
+<p>sample code to show makeIntent</p>
+</blockquote>
+<h3 id='getintent'>getIntent()</h3>
+<p>Returns the intent that launched the script</p>
+
+<blockquote>
+<p>sample code to show getIntent</p>
+</blockquote>
+<h3 id='startactivityforresult-action-uri-type-extras-packagename-classname'>startActivityForResult(action, uri, type, extras, packagename, classname)</h3>
+<p>Starts an activity and returns the result</p>
+
+<p>:param str action: action
+   :param str uri(Optional): uri
+   :param str type(Optional): MIME type/subtype of the URI
+   :param object extras(Optional): a Map of extras to add to the Intent
+   :param str packagename(Optional): name of package. If used, requires classname to be useful
+   :param str classname(Optional): name of class. If used, requires packagename to be useful</p>
+
+<p>:return: A Map representation of the result Intent</p>
+
+<blockquote>
+<p>sample code to show startActivityForResult</p>
+</blockquote>
+<h3 id='startactivityforresultintent-intent'>startActivityForResultIntent(intent)</h3>
+<p>Starts an activity and returns the result</p>
+
+<p>:param Intent intent: Intent in the format as returned from makeIntent</p>
+
+<p>:return: A Map representation of the result Intent</p>
+
+<blockquote>
+<p>sample code to show startActivityForResultIntent</p>
+</blockquote>
+<h3 id='startactivityintent-intent-wait'>startActivityIntent(intent, wait)</h3>
+<p>Starts an activity</p>
+
+<p>:param Intent intent: Intent in the format as returned from makeIntent
+   :param bool wait(Optional): block until the user exits the started activity</p>
+
+<blockquote>
+<p>sample code to show startActivityIntent</p>
+</blockquote>
+<h3 id='startactivity-action-uri-type-extras-wait-packagename-classname'>startActivity(action, uri, type, extras, wait, packagename, classname)</h3>
+<p>Starts an activity</p>
+
+<p>:param str action: action
+   :param str uri(Optional): uri
+   :param str type(Optional): MIME type/subtype of the URI
+   :param object extras(Optional): a Map of extras to add to the Intent
+   :param bool wait(Optional): block until the user exits the started activity
+   :param str packagename(Optional): name of package. If used, requires classname to be useful
+   :param str classname(Optional): name of class. If used, requires packagename to be useful</p>
+
+<blockquote>
+<p>sample code to show startActivityForResultIntent</p>
+</blockquote>
+<h2 id='0103-sendbroadcast-apis'>0103 SendBroadcast APIs</h2><h3 id='sendbroadcast-action-uri-type-extras-packagename-classname'>sendBroadcast(action, uri, type, extras, packagename, classname)</h3>
+<p>Send a broadcast</p>
+
+<p>:param str action: action
+   :param str uri(Optional): uri
+   :param str type(Optional): MIME type/subtype of the URI
+   :param object extras(Optional): a Map of extras to add to the Intent
+   :param str packagename(Optional): name of package. If used, requires classname to be useful
+   :param str classname(Optional): name of class. If used, requires packagename to be useful</p>
+
+<blockquote>
+<p>sample code to show sendBroadcast</p>
+</blockquote>
+<h3 id='sendbroadcastintent-intent'>sendBroadcastIntent(intent)</h3>
+<p>Send a broadcast</p>
+
+<p>:param Intent intent: Intent in the format as returned from makeIntent</p>
+
+<blockquote>
+<p>sample code to show sendBroadcastIntent</p>
+</blockquote>
+<h2 id='0104-vibrate'>0104 Vibrate</h2><h3 id='vibrate-intent'>vibrate(intent)</h3>
+<p>Vibrates the phone or a specified duration in milliseconds</p>
+
+<p>:param int duration: duration in milliseconds</p>
+
+<blockquote>
+<p>sample code to show vibrate</p>
+</blockquote>
+<h2 id='0105-networkstatus'>0105 NetworkStatus</h2><h3 id='getnetworkstatus'>getNetworkStatus()</h3>
+<p>Returns the status of network connection</p>
+
+<blockquote>
+<p>sample code to show getNetworkStatus</p>
+</blockquote>
+<h2 id='0106-packageversion-apis'>0106 PackageVersion APIs</h2><h3 id='requiredversion-requiredversion'>requiredVersion(requiredVersion)</h3>
+<p>Checks if version of QPython SL4A is greater than or equal to the specified version</p>
+
+<p>:param int requiredVersion: requiredVersion</p>
+
+<p>:return: true or false</p>
+<h3 id='getpackageversioncode-packagename'>getPackageVersionCode(packageName)</h3>
+<p>Returns package version code</p>
+
+<p>:param str packageName: packageName</p>
+
+<p>:return: Package version code</p>
+<h3 id='getpackageversion-packagename'>getPackageVersion(packageName)</h3>
+<p>Returns package version name</p>
+
+<p>:param str packageName: packageName</p>
+
+<p>:return: Package version name</p>
+
+<blockquote>
+<p>sample code to show getPackageVersionCode &amp; getPackageVersion</p>
+</blockquote>
+<h2 id='0107-system-apis'>0107 System APIs</h2><h3 id='getconstants-classname'>getConstants(classname)</h3>
+<p>Get list of constants (static final fields) for a class</p>
+
+<p>:param str classname: classname</p>
+
+<p>:return: list</p>
+
+<blockquote>
+<p>sample code to show getConstants</p>
+</blockquote>
+<h3 id='environment'>environment()</h3>
+<p>A map of various useful environment details</p>
+
+<p>:return: environment map object includes id, display, offset, TZ, SDK, download, appcache, availblocks, blocksize, blockcount, sdcard</p>
+
+<blockquote>
+<p>sample code to show environment</p>
+</blockquote>
+<h3 id='log-message'>log(message)</h3>
+<p>Writes message to logcat</p>
+
+<p>:param str message: message</p>
+
+<blockquote>
+<p>sample code to show log</p>
+</blockquote>
+<h2 id='0108-sendemail'>0108 SendEmail</h2><h3 id='sendemail-to-subject-body-attachmenturi'>sendEmail(to, subject, body, attachmentUri)</h3>
+<p>Launches an activity that sends an e-mail message to a given recipient</p>
+
+<p>:param str to: A comma separated list of recipients
+   :param str subject: subject
+   :param str body: mail body
+   :param str attachmentUri(Optional): message</p>
+
+<blockquote>
+<p>sample code to show sendEmail</p>
+</blockquote>
+<h2 id='0109-toast-getinput-getpassword-notify-apis'>0109 Toast, getInput, getPassword, notify APIs</h2><h3 id='maketoast-message'>makeToast(message)</h3>
+<p>Displays a short-duration Toast notification</p>
+
+<p>:param str message: message</p>
+
+<blockquote>
+<p>sample code to show makeToast</p>
+</blockquote>
+<h3 id='getinput-title-message'>getInput(title, message)</h3>
+<p>Queries the user for a text input</p>
+
+<p>:param str title: title of the input box
+   :param str message: message to display above the input box</p>
+
+<blockquote>
+<p>sample code to show getInput</p>
+</blockquote>
+<h3 id='getpassword-title-message'>getPassword(title, message)</h3>
+<p>Queries the user for a password</p>
+
+<p>:param str title: title of the input box
+   :param str message: message to display above the input box</p>
+
+<blockquote>
+<p>sample code to show getPassword</p>
+</blockquote>
+<h3 id='notify-title-message-url'>notify(title, message, url)</h3>
+<p>Displays a notification that will be canceled when the user clicks on it</p>
+
+<p>:param str title: title
+   :param str message: message
+   :param str url(optional): url</p>
+
+<blockquote>
+<p>Sample code of notify</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code>    <span class="kn">import</span> <span class="nn">androidhelper</span>
+    <span class="n">droid</span> <span class="o">=</span> <span class="n">androidhelper</span><span class="p">.</span><span class="n">Android</span><span class="p">()</span>
+    <span class="n">droid</span><span class="p">.</span><span class="n">notify</span><span class="p">(</span><span class="s">'Hello'</span><span class="p">,</span><span class="s">'QPython'</span><span class="p">,</span><span class="s">'http://qpython.org'</span><span class="p">)</span> 
+    <span class="c1">#You could set the 3rd parameter None also
+</span>
+</code></pre></div><h1 id='02-applicationmanagerfacade'>02 ApplicationManagerFacade</h1><h2 id='0201-manager-apis'>0201 Manager APIs</h2><h3 id='getlaunchableapplications'>getLaunchableApplications()</h3>
+<p>Returns a list of all launchable application class names</p>
+
+<p>:return: map object</p>
+
+<blockquote>
+<p>sample code to show getLaunchableApplications</p>
+</blockquote>
+<h3 id='launch-classname'>launch(classname)</h3>
+<p>Start activity with the given class name</p>
+
+<p>:param str classname: classname</p>
+
+<blockquote>
+<p>sample code to show launch</p>
+</blockquote>
+<h3 id='getrunningpackages'>getRunningPackages()</h3>
+<p>Returns a list of packages running activities or services</p>
+
+<p>:return: List of packages running activities</p>
+
+<blockquote>
+<p>sample code to show getRunningPackages</p>
+</blockquote>
+<h3 id='forcestoppackage-packagename'>forceStopPackage(packageName)</h3>
+<p>Force stops a package</p>
+
+<p>:param str packageName: packageName</p>
+
+<blockquote>
+<p>sample code to show forceStopPackage</p>
+</blockquote>
+<h1 id='03-camerafacade'>03 CameraFacade</h1><h2 id='0301-camera-apis'>0301 Camera APIs</h2><h3 id='cameracapturepicture-targetpath'>cameraCapturePicture(targetPath)</h3>
+<p>Take a picture and save it to the specified path</p>
+
+<p>:return: A map of Booleans autoFocus and takePicture where True indicates success</p>
+<h3 id='camerainteractivecapturepicture-targetpath'>cameraInteractiveCapturePicture(targetPath)</h3>
+<p>Starts the image capture application to take a picture and saves it to the specified path</p>
+<h1 id='04-commonintentsfacade'>04 CommonIntentsFacade</h1><h2 id='0401-barcode-apis'>0401 Barcode APIs</h2><h3 id='scanbarcode'>scanBarcode()</h3>
+<p>Starts the barcode scanner</p>
+
+<p>:return: A Map representation of the result Intent</p>
+<h2 id='0402-view-apis'>0402 View APIs</h2><h3 id='pick-uri'>pick(uri)</h3>
+<p>Display content to be picked by URI (e.g. contacts)</p>
+
+<p>:return: A map of result values</p>
+<h3 id='view-uri-type-extras'>view(uri, type, extras)</h3>
+<p>Start activity with view action by URI (i.e. browser, contacts, etc.)</p>
+<h3 id='viewmap-query'>viewMap(query)</h3>
+<p>Opens a map search for query (e.g. pizza, 123 My Street)</p>
+<h3 id='viewcontacts'>viewContacts()</h3>
+<p>Opens the list of contacts</p>
+<h3 id='viewhtml-path'>viewHtml(path)</h3>
+<p>Opens the browser to display a local HTML file</p>
+<h3 id='search-query'>search(query)</h3>
+<p>Starts a search for the given query</p>
+<h1 id='05-contactsfacade'>05 ContactsFacade</h1><h2 id='0501-contacts-apis'>0501 Contacts APIs</h2><h3 id='pickcontact'>pickContact()</h3>
+<p>Displays a list of contacts to pick from</p>
+
+<p>:return: A map of result values</p>
+<h3 id='pickphone'>pickPhone()</h3>
+<p>Displays a list of phone numbers to pick from</p>
+
+<p>:return: The selected phone number</p>
+<h3 id='contactsgetattributes'>contactsGetAttributes()</h3>
+<p>Returns a List of all possible attributes for contacts</p>
+
+<p>:return: a List of contacts as Maps</p>
+<h3 id='contactsgetids'>contactsGetIds()</h3>
+<p>Returns a List of all contact IDs</p>
+<h3 id='contactsget-attributes'>contactsGet(attributes)</h3>
+<p>Returns a List of all contacts</p>
+<h3 id='contactsgetbyid-id'>contactsGetById(id)</h3>
+<p>Returns contacts by ID</p>
+<h3 id='contactsgetcount'>contactsGetCount()</h3>
+<p>Returns the number of contacts</p>
+<h3 id='querycontent-uri-attributes-selection-selectionargs-order'>queryContent(uri, attributes, selection, selectionArgs, order)</h3>
+<p>Content Resolver Query</p>
+
+<p>:return: result of query as Maps</p>
+<h3 id='queryattributes-uri'>queryAttributes(uri)</h3>
+<p>Content Resolver Query Attributes</p>
+
+<p>:return: a list of available columns for a given content uri</p>
+<h1 id='06-eventfacade'>06 EventFacade</h1><h2 id='0601-event-apis'>0601 Event APIs</h2><h3 id='eventclearbuffer'>eventClearBuffer()</h3>
+<p>Clears all events from the event buffer</p>
+<h3 id='eventregisterforbroadcast-category-enqueue'>eventRegisterForBroadcast(category, enqueue)</h3>
+<p>Registers a listener for a new broadcast signal</p>
+<h3 id='eventunregisterforbroadcast-category'>eventUnregisterForBroadcast(category)</h3>
+<p>Stop listening for a broadcast signal</p>
+<h3 id='eventgetbrodcastcategories'>eventGetBrodcastCategories()</h3>
+<p>Lists all the broadcast signals we are listening for</p>
+<h3 id='eventpoll-number_of_events'>eventPoll(number_of_events)</h3>
+<p>Returns and removes the oldest n events (i.e. location or sensor update, etc.) from the event buffer</p>
+
+<p>:return: A List of Maps of event properties</p>
+<h3 id='eventwaitfor-eventname-timeout'>eventWaitFor(eventName, timeout)</h3>
+<p>Blocks until an event with the supplied name occurs. The returned event is not removed from the buffer</p>
+
+<p>:return: Map of event properties</p>
+<h3 id='eventwait-timeout'>eventWait(timeout)</h3>
+<p>Blocks until an event occurs. The returned event is removed from the buffer</p>
+
+<p>:return: Map of event properties</p>
+<h3 id='eventpost-name-data-enqueue'>eventPost(name, data, enqueue)</h3>
+<p>Post an event to the event queue</p>
+<h3 id='rpcpostevent-name-data'>rpcPostEvent(name, data)</h3>
+<p>Post an event to the event queue</p>
+<h3 id='receiveevent'>receiveEvent()</h3>
+<p>Returns and removes the oldest event (i.e. location or sensor update, etc.) from the event buffer</p>
+
+<p>:return: Map of event properties</p>
+<h3 id='waitforevent-eventname-timeout'>waitForEvent(eventName, timeout)</h3>
+<p>Blocks until an event with the supplied name occurs. The returned event is not removed from the buffer</p>
+
+<p>:return: Map of event properties</p>
+<h3 id='starteventdispatcher-port'>startEventDispatcher(port)</h3>
+<p>Opens up a socket where you can read for events posted</p>
+<h3 id='stopeventdispatcher'>stopEventDispatcher()</h3>
+<p>Stops the event server, you can&#39;t read in the port anymore</p>
+<h1 id='07-locationfacade'>07 LocationFacade</h1><h2 id='0701-providers-apis'>0701 Providers APIs</h2><h3 id='locationproviders'>locationProviders()</h3>
+<p>Returns availables providers on the phone</p>
+<h3 id='locationproviderenabled-provider'>locationProviderEnabled(provider)</h3>
+<p>Ask if provider is enabled</p>
+<h2 id='0702-location-apis'>0702 Location APIs</h2><h3 id='startlocating-mindistance-minupdatedistance'>startLocating(minDistance, minUpdateDistance)</h3>
+<p>Starts collecting location data</p>
+<h3 id='readlocation'>readLocation()</h3>
+<p>Returns the current location as indicated by all available providers</p>
+
+<p>:return: A map of location information by provider</p>
+<h3 id='stoplocating'>stopLocating()</h3>
+<p>Stops collecting location data</p>
+
+<p>getLastKnownLocation()</p>
+
+<p>Returns the last known location of the device</p>
+
+<p>:return: A map of location information by provider</p>
+<div class="highlight"><pre class="highlight python tab-python"><code>
+    <span class="n">Droid</span> <span class="o">=</span> <span class="n">androidhelper</span><span class="p">.</span><span class="n">Android</span><span class="p">()</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">Droid</span><span class="p">.</span><span class="n">getLastKnownLocation</span><span class="p">().</span><span class="n">result</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">location</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'network'</span><span class="p">,</span> <span class="n">location</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'gps'</span><span class="p">))</span>
+</code></pre></div><h2 id='0703-geo'>0703 GEO</h2><h3 id='geocode-latitude-longitude-maxresults'>geocode(latitude, longitude, maxResults)</h3>
+<p>Returns a list of addresses for the given latitude and longitude</p>
+
+<p>:return: A list of addresses</p>
+<h1 id='08-phonefacade'>08 PhoneFacade</h1><h2 id='0801-phonestat-apis'>0801 PhoneStat APIs</h2><h3 id='starttrackingphonestate'>startTrackingPhoneState()</h3>
+<p>Starts tracking phone state</p>
+<h3 id='readphonestate'>readPhoneState()</h3>
+<p>Returns the current phone state and incoming number</p>
+
+<p>:return: A Map of &quot;state&quot; and &quot;incomingNumber&quot;</p>
+<h3 id='stoptrackingphonestate'>stopTrackingPhoneState()</h3>
+<p>Stops tracking phone state</p>
+<h2 id='0802-call-amp-dia-apis'>0802 Call &amp; Dia APIs</h2><h3 id='phonecall-uri'>phoneCall(uri)</h3>
+<p>Calls a contact/phone number by URI</p>
+<h3 id='phonecallnumber-number'>phoneCallNumber(number)</h3>
+<p>Calls a phone number</p>
+<h3 id='phonedial-uri'>phoneDial(uri)</h3>
+<p>Dials a contact/phone number by URI</p>
+<h3 id='phonedialnumber-number'>phoneDialNumber(number)</h3>
+<p>Dials a phone number</p>
+<h2 id='0803-get-information-apis'>0803 Get information APIs</h2><h3 id='getcelllocation'>getCellLocation()</h3>
+<p>Returns the current cell location</p>
+<h3 id='getnetworkoperator'>getNetworkOperator()</h3>
+<p>Returns the numeric name (MCC+MNC) of current registered operator</p>
+<h3 id='getnetworkoperatorname'>getNetworkOperatorName()</h3>
+<p>Returns the alphabetic name of current registered operator</p>
+<h3 id='getnetworktype'>getNetworkType()</h3>
+<p>Returns a the radio technology (network type) currently in use on the device</p>
+<h3 id='getphonetype'>getPhoneType()</h3>
+<p>Returns the device phone type</p>
+<h3 id='getsimcountryiso'>getSimCountryIso()</h3>
+<p>Returns the ISO country code equivalent for the SIM provider&#39;s country code</p>
+<h3 id='getsimoperator'>getSimOperator()</h3>
+<p>Returns the MCC+MNC (mobile country code + mobile network code) of the provider of the SIM. 5 or 6 decimal digits</p>
+<h3 id='getsimoperatorname'>getSimOperatorName()</h3>
+<p>Returns the Service Provider Name (SPN)</p>
+<h3 id='getsimserialnumber'>getSimSerialNumber()</h3>
+<p>Returns the serial number of the SIM, if applicable. Return null if it is unavailable</p>
+<h3 id='getsimstate'>getSimState()</h3>
+<p>Returns the state of the device SIM card</p>
+<h3 id='getsubscriberid'>getSubscriberId()</h3>
+<p>Returns the unique subscriber ID, for example, the IMSI for a GSM phone. Return null if it is unavailable</p>
+<h3 id='getvoicemailalphatag'>getVoiceMailAlphaTag()</h3>
+<p>Retrieves the alphabetic identifier associated with the voice mail number</p>
+<h3 id='getvoicemailnumber'>getVoiceMailNumber()</h3>
+<p>Returns the voice mail number. Return null if it is unavailable</p>
+<h3 id='checknetworkroaming'>checkNetworkRoaming()</h3>
+<p>Returns true if the device is considered roaming on the current network, for GSM purposes</p>
+<h3 id='getdeviceid'>getDeviceId()</h3>
+<p>Returns the unique device ID, for example, the IMEI for GSM and the MEID for CDMA phones. Return null if device ID is not available</p>
+<h3 id='getdevicesoftwareversion'>getDeviceSoftwareVersion()</h3>
+<p>Returns the software version number for the device, for example, the IMEI/SV for GSM phones. Return null if the software version is not available</p>
+<h3 id='getline1number'>getLine1Number()</h3>
+<p>Returns the phone number string for line 1, for example, the MSISDN for a GSM phone. Return null if it is unavailable</p>
+<h3 id='getneighboringcellinfo'>getNeighboringCellInfo()</h3>
+<p>Returns the neighboring cell information of the device</p>
+<h1 id='09-mediarecorderfacade'>09 MediaRecorderFacade</h1><h2 id='0901-audio'>0901 Audio</h2><h3 id='recorderstartmicrophone-targetpath'>recorderStartMicrophone(targetPath)</h3>
+<p>Records audio from the microphone and saves it to the given location</p>
+<h2 id='0902-video-apis'>0902 Video APIs</h2><h3 id='recorderstartvideo-targetpath-duration-videosize'>recorderStartVideo(targetPath, duration, videoSize)</h3>
+<p>Records video from the camera and saves it to the given location.
+   Duration specifies the maximum duration of the recording session.
+   If duration is 0 this method will return and the recording will only be stopped
+   when recorderStop is called or when a scripts exits.
+   Otherwise it will block for the time period equal to the duration argument.
+   videoSize: 0=160x120, 1=320x240, 2=352x288, 3=640x480, 4=800x480.</p>
+<h3 id='recordercapturevideo-targetpath-duration-recordaudio'>recorderCaptureVideo(targetPath, duration, recordAudio)</h3>
+<p>Records video (and optionally audio) from the camera and saves it to the given location.
+   Duration specifies the maximum duration of the recording session.
+   If duration is not provided this method will return immediately and the recording will only be stopped
+   when recorderStop is called or when a scripts exits.
+   Otherwise it will block for the time period equal to the duration argument.</p>
+<h3 id='startinteractivevideorecording-path'>startInteractiveVideoRecording(path)</h3>
+<p>Starts the video capture application to record a video and saves it to the specified path</p>
+<h2 id='0903-stop'>0903 Stop</h2><h3 id='recorderstop'>recorderStop()</h3>
+<p>Stops a previously started recording</p>
+<h1 id='10-sensormanagerfacade'>10 SensorManagerFacade</h1><h2 id='1001-start-amp-stop'>1001 Start &amp; Stop</h2><h3 id='startsensingtimed-sensornumber-delaytime'>startSensingTimed(sensorNumber, delayTime)</h3>
+<p>Starts recording sensor data to be available for polling</p>
+<h3 id='startsensingthreshold-ensornumber-threshold-axis'>startSensingThreshold(ensorNumber, threshold, axis)</h3>
+<p>Records to the Event Queue sensor data exceeding a chosen threshold</p>
+<h3 id='startsensing-samplesize'>startSensing(sampleSize)</h3>
+<p>Starts recording sensor data to be available for polling</p>
+<h3 id='stopsensing'>stopSensing()</h3>
+<p>Stops collecting sensor data</p>
+<h2 id='1002-read-data-apis'>1002 Read data APIs</h2><h3 id='readsensors'>readSensors()</h3>
+<p>Returns the most recently recorded sensor data</p>
+<h3 id='sensorsgetaccuracy'>sensorsGetAccuracy()</h3>
+<p>Returns the most recently received accuracy value</p>
+<h3 id='sensorsgetlight'>sensorsGetLight()</h3>
+<p>Returns the most recently received light value</p>
+<h3 id='sensorsreadaccelerometer'>sensorsReadAccelerometer()</h3>
+<p>Returns the most recently received accelerometer values</p>
+
+<p>:return: a List of Floats [(acceleration on the) X axis, Y axis, Z axis]</p>
+<h3 id='sensorsreadmagnetometer'>sensorsReadMagnetometer()</h3>
+<p>Returns the most recently received magnetic field values</p>
+
+<p>:return: a List of Floats [(magnetic field value for) X axis, Y axis, Z axis]</p>
+
+<p>sensorsReadOrientation()</p>
+
+<p>Returns the most recently received orientation values</p>
+
+<p>:return: a List of Doubles [azimuth, pitch, roll]</p>
+<div class="highlight"><pre class="highlight python tab-python"><code>
+    <span class="n">Droid</span> <span class="o">=</span> <span class="n">androidhelper</span><span class="p">.</span><span class="n">Android</span><span class="p">()</span>
+    <span class="n">Droid</span><span class="p">.</span><span class="n">startSensingTimed</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+    <span class="n">sensor</span> <span class="o">=</span> <span class="n">Droid</span><span class="p">.</span><span class="n">sensorsReadOrientation</span><span class="p">().</span><span class="n">result</span>
+    <span class="n">Droid</span><span class="p">.</span><span class="n">stopSensing</span><span class="p">()</span>
+</code></pre></div><h1 id='11-settingsfacade'>11 SettingsFacade</h1><h2 id='1101-screen'>1101 Screen</h2><h3 id='setscreentimeout-value'>setScreenTimeout(value)</h3>
+<p>Sets the screen timeout to this number of seconds</p>
+
+<p>:return: The original screen timeout</p>
+<h3 id='getscreentimeout'>getScreenTimeout()</h3>
+<p>Gets the screen timeout</p>
+
+<p>:return: the current screen timeout in seconds</p>
+<h2 id='1102-airplanermode'>1102 AirplanerMode</h2><h3 id='checkairplanemode'>checkAirplaneMode()</h3>
+<p>Checks the airplane mode setting</p>
+
+<p>:return: True if airplane mode is enabled</p>
+<h3 id='toggleairplanemode-enabled'>toggleAirplaneMode(enabled)</h3>
+<p>Toggles airplane mode on and off</p>
+
+<p>:return: True if airplane mode is enabled</p>
+<h2 id='1103-ringer-silent-mode'>1103 Ringer Silent Mode</h2><h3 id='checkringersilentmode'>checkRingerSilentMode()</h3>
+<p>Checks the ringer silent mode setting</p>
+
+<p>:return: True if ringer silent mode is enabled</p>
+<h3 id='toggleringersilentmode-enabled'>toggleRingerSilentMode(enabled)</h3>
+<p>Toggles ringer silent mode on and off</p>
+
+<p>:return: True if ringer silent mode is enabled</p>
+<h2 id='1104-vibrate-mode'>1104 Vibrate Mode</h2><h3 id='togglevibratemode-enabled'>toggleVibrateMode(enabled)</h3>
+<p>Toggles vibrate mode on and off. If ringer=true then set Ringer setting, else set Notification setting</p>
+
+<p>:return: True if vibrate mode is enabled</p>
+<h3 id='getvibratemode-ringer'>getVibrateMode(ringer)</h3>
+<p>Checks Vibration setting. If ringer=true then query Ringer setting, else query Notification setting</p>
+
+<p>:return: True if vibrate mode is enabled</p>
+<h2 id='1105-ringer-amp-media-volume'>1105 Ringer &amp; Media Volume</h2><h3 id='getmaxringervolume'>getMaxRingerVolume()</h3>
+<p>Returns the maximum ringer volume</p>
+<h3 id='getringervolume'>getRingerVolume()</h3>
+<p>Returns the current ringer volume</p>
+<h3 id='setringervolume-volume'>setRingerVolume(volume)</h3>
+<p>Sets the ringer volume</p>
+<h3 id='getmaxmediavolume'>getMaxMediaVolume()</h3>
+<p>Returns the maximum media volume</p>
+<h3 id='getmediavolume'>getMediaVolume()</h3>
+<p>Returns the current media volume</p>
+<h3 id='setmediavolume-volume'>setMediaVolume(volume)</h3>
+<p>Sets the media volume</p>
+<h2 id='1105-screen-brightness'>1105 Screen Brightness</h2><h3 id='getscreenbrightness'>getScreenBrightness()</h3>
+<p>Returns the screen backlight brightness</p>
+
+<p>:return: the current screen brightness between 0 and 255</p>
+<h3 id='setscreenbrightness-value'>setScreenBrightness(value)</h3>
+<p>Sets the the screen backlight brightness</p>
+
+<p>:return: the original screen brightness</p>
+<h3 id='checkscreenon'>checkScreenOn()</h3>
+<p>Checks if the screen is on or off (requires API level 7)</p>
+
+<p>:return: True if the screen is currently on</p>
+<h1 id='12-smsfacade'>12 SmsFacade</h1><h2 id='1201-sms-api'>1201 Sms API</h2><h3 id='smssend-destinationaddress-text'>smsSend(destinationAddress, text)</h3>
+<p>Sends an SMS</p>
+
+<p>:param str destinationAddress: typically a phone number
+   :param str text:</p>
+<h3 id='smsgetmessagecount-unreadonly-folder'>smsGetMessageCount(unreadOnly, folder)</h3>
+<p>Returns the number of messages</p>
+
+<p>:param bool unreadOnly: typically a phone number
+   :param str folder(optional): default &quot;inbox&quot;</p>
+<h3 id='smsgetmessageids-unreadonly-folder'>smsGetMessageIds(unreadOnly, folder)</h3>
+<p>Returns a List of all message IDs</p>
+
+<p>:param bool unreadOnly: typically a phone number
+   :param str folder(optional): default &quot;inbox&quot;</p>
+<h3 id='smsgetmessages-unreadonly-folder-attributes'>smsGetMessages(unreadOnly, folder, attributes)</h3>
+<p>Returns a List of all messages</p>
+
+<p>:param bool unreadOnly: typically a phone number
+   :param str folder: default &quot;inbox&quot;
+   :param list attributes(optional): attributes</p>
+
+<p>:return: a List of messages as Maps</p>
+<h3 id='smsgetmessagebyid-id-attributes'>smsGetMessageById(id, attributes)</h3>
+<p>Returns message attributes</p>
+
+<p>:param int id: message ID
+   :param list attributes(optional): attributes</p>
+
+<p>:return: a List of messages as Maps</p>
+<h3 id='smsgetattributes'>smsGetAttributes()</h3>
+<p>Returns a List of all possible message attributes</p>
+<h3 id='smsdeletemessage-id'>smsDeleteMessage(id)</h3>
+<p>Deletes a message</p>
+
+<p>:param int id: message ID</p>
+
+<p>:return: True if the message was deleted</p>
+<h3 id='smsmarkmessageread-ids-read'>smsMarkMessageRead(ids, read)</h3>
+<p>Marks messages as read</p>
+
+<p>:param list ids: List of message IDs to mark as read
+   :param bool read:  true or false</p>
+
+<p>:return: number of messages marked read</p>
+<h1 id='13-speechrecognitionfacade'>13 SpeechRecognitionFacade</h1><h2 id='1301-speech-api'>1301 Speech API</h2><h3 id='recognizespeech-prompt-language-languagemodel'>recognizeSpeech(prompt, language, languageModel)</h3>
+<p>Recognizes user&#39;s speech and returns the most likely result</p>
+
+<p>:param str prompt(optional): text prompt to show to the user when asking them to speak
+   :param str language(optional): language override to inform the recognizer that it should expect speech in a language different than the one set in the java.util.Locale.getDefault()
+   :param str languageModel(optional): informs the recognizer which speech model to prefer (see android.speech.RecognizeIntent)</p>
+
+<p>:return: An empty string in case the speech cannot be recongnized</p>
+<h1 id='14-tonegeneratorfacade'>14 ToneGeneratorFacade</h1><h2 id='1401-tones-api'>1401 Tones API</h2><h3 id='generatedtmftones-phonenumber-toneduration'>generateDtmfTones(phoneNumber, toneDuration)</h3>
+<p>Generate DTMF tones for the given phone number</p>
+
+<p>:param str phoneNumber: phone number
+   :param int toneDuration(optional): default 100, duration of each tone in milliseconds</p>
+<h1 id='15-wakelockfacade'>15 WakeLockFacade</h1><h2 id='1501-wake-api'>1501 Wake API</h2><h3 id='wakelockacquirefull'>wakeLockAcquireFull()</h3>
+<p>Acquires a full wake lock (CPU on, screen bright, keyboard bright)</p>
+<h3 id='wakelockacquirepartial'>wakeLockAcquirePartial()</h3>
+<p>Acquires a partial wake lock (CPU on)</p>
+<h3 id='wakelockacquirebright'>wakeLockAcquireBright()</h3>
+<p>Acquires a bright wake lock (CPU on, screen bright)</p>
+<h3 id='wakelockacquiredim'>wakeLockAcquireDim()</h3>
+<p>Acquires a dim wake lock (CPU on, screen dim)</p>
+<h3 id='wakelockrelease'>wakeLockRelease()</h3>
+<p>Releases the wake lock</p>
+<h1 id='16-wififacade'>16 WifiFacade</h1><h2 id='1601-wifi-apis'>1601 Wifi APIs</h2><h3 id='wifigetscanresults'>wifiGetScanResults()</h3>
+<p>Returns the list of access points found during the most recent Wifi scan</p>
+<h3 id='wifilockacquirefull'>wifiLockAcquireFull()</h3>
+<p>Acquires a full Wifi lock</p>
+<h3 id='wifilockacquirescanonly'>wifiLockAcquireScanOnly()</h3>
+<p>Acquires a scan only Wifi lock</p>
+<h3 id='wifilockrelease'>wifiLockRelease()</h3>
+<p>Releases a previously acquired Wifi lock</p>
+<h3 id='wifistartscan'>wifiStartScan()</h3>
+<p>Starts a scan for Wifi access points</p>
+
+<p>:return: True if the scan was initiated successfully</p>
+<h3 id='checkwifistate'>checkWifiState()</h3>
+<p>Checks Wifi state</p>
+
+<p>:return: True if Wifi is enabled</p>
+<h3 id='togglewifistate-enabled'>toggleWifiState(enabled)</h3>
+<p>Toggle Wifi on and off</p>
+
+<p>:param bool enabled(optional): enabled</p>
+
+<p>:return: True if Wifi is enabled</p>
+<h3 id='wifidisconnect'>wifiDisconnect()</h3>
+<p>Disconnects from the currently active access point</p>
+
+<p>:return: True if the operation succeeded</p>
+<h3 id='wifigetconnectioninfo'>wifiGetConnectionInfo()</h3>
+<p>Returns information about the currently active access point</p>
+<h3 id='wifireassociate'>wifiReassociate()</h3>
+<p>Returns information about the currently active access point</p>
+
+<p>:return: True if the operation succeeded</p>
+<h3 id='wifireconnect'>wifiReconnect()</h3>
+<p>Reconnects to the currently active access point</p>
+
+<p>:return: True if the operation succeeded</p>
+<h1 id='18-batterymanagerfacade'>18 BatteryManagerFacade</h1><h2 id='1801-battery-apis'>1801 Battery APIs</h2><h3 id='readbatterydata'>readBatteryData()</h3>
+<p>Returns the most recently recorded battery data</p>
+<h3 id='batterystartmonitoring'>batteryStartMonitoring()</h3>
+<p>Starts tracking battery state</p>
+<h3 id='batterystopmonitoring'>batteryStopMonitoring()</h3>
+<p>Stops tracking battery state</p>
+<h3 id='batterygetstatus'>batteryGetStatus()</h3>
+<p>Returns  the most recently received battery status data:
+   1 - unknown;
+   2 - charging;
+   3 - discharging;
+   4 - not charging;
+   5 - full</p>
+<h3 id='batterygethealth'>batteryGetHealth()</h3>
+<p>Returns the most recently received battery health data:
+   1 - unknown;
+   2 - good;
+   3 - overheat;
+   4 - dead;
+   5 - over voltage;
+   6 - unspecified failure</p>
+<h3 id='batterygetplugtype'>batteryGetPlugType()</h3>
+<p>Returns the most recently received plug type data:
+   -1 - unknown
+   0 - unplugged
+   1 - power source is an AC charger
+   2 - power source is a USB port</p>
+<h3 id='batterycheckpresent'>batteryCheckPresent()</h3>
+<p>Returns the most recently received battery presence data</p>
+<h3 id='batterygetlevel'>batteryGetLevel()</h3>
+<p>Returns the most recently received battery level (percentage)</p>
+<h3 id='batterygetvoltage'>batteryGetVoltage()</h3>
+<p>Returns the most recently received battery voltage</p>
+<h3 id='batterygettemperature'>batteryGetTemperature()</h3>
+<p>Returns the most recently received battery temperature</p>
+<h3 id='batterygettechnology'>batteryGetTechnology()</h3>
+<p>Returns the most recently received battery technology data</p>
+<h1 id='19-activityresultfacade'>19 ActivityResultFacade</h1><h2 id='1901-activity-apis'>1901 Activity APIs</h2><h3 id='setresultboolean-resultcode-resultvalue'>setResultBoolean(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultbyte-resultcode-resultvalue'>setResultByte(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultshort-resultcode-resultvalue'>setResultShort(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultchar-resultcode-resultvalue'>setResultChar(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultinteger-resultcode-resultvalue'>setResultInteger(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultlong-resultcode-resultvalue'>setResultLong(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultfloat-resultcode-resultvalue'>setResultFloat(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultdouble-resultcode-resultvalue'>setResultDouble(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultstring-resultcode-resultvalue'>setResultString(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultbooleanarray-resultcode-resultvalue'>setResultBooleanArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultbytearray-resultcode-resultvalue'>setResultByteArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultshortarray-resultcode-resultvalue'>setResultShortArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultchararray-resultcode-resultvalue'>setResultCharArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultintegerarray-resultcode-resultvalue'>setResultIntegerArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultlongarray-resultcode-resultvalue'>setResultLongArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultfloatarray-resultcode-resultvalue'>setResultFloatArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultdoublearray-resultcode-resultvalue'>setResultDoubleArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultstringarray-resultcode-resultvalue'>setResultStringArray(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h3 id='setresultserializable-resultcode-resultvalue'>setResultSerializable(resultCode, resultValue)</h3>
+<p>Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(),
+   the resulting intent will contain SCRIPT_RESULT extra with the given value</p>
+
+<p>:param int resultCode:
+   :param byte resultValue:</p>
+<h1 id='20-mediaplayerfacade'>20 MediaPlayerFacade</h1><h2 id='2001-control'>2001 Control</h2><h3 id='mediaplay-url-tag-play'>mediaPlay(url, tag, play)</h3>
+<p>Open a media file</p>
+
+<p>:param str url: url of media resource
+   :param str tag(optional): string identifying resource (default=default)
+   :param bool play(optional): start playing immediately</p>
+
+<p>:return: true if play successful</p>
+<h3 id='mediaplaypause-tag'>mediaPlayPause(tag)</h3>
+<p>pause playing media file</p>
+
+<p>:param str tag: string identifying resource (default=default)</p>
+
+<p>:return: true if successful</p>
+<h3 id='mediaplaystart-tag'>mediaPlayStart(tag)</h3>
+<p>start playing media file</p>
+
+<p>:param str tag: string identifying resource (default=default)</p>
+
+<p>:return: true if successful</p>
+<h3 id='mediaplayclose-tag'>mediaPlayClose(tag)</h3>
+<p>Close media file</p>
+
+<p>:param str tag: string identifying resource (default=default)</p>
+
+<p>:return: true if successful</p>
+<h3 id='mediaisplaying-tag'>mediaIsPlaying(tag)</h3>
+<p>Checks if media file is playing</p>
+
+<p>:param str tag: string identifying resource (default=default)</p>
+
+<p>:return: true if successful</p>
+<h3 id='mediaplaysetlooping-enabled-tag'>mediaPlaySetLooping(enabled, tag)</h3>
+<p>Set Looping</p>
+
+<p>:param bool enabled: default true
+   :param str tag: string identifying resource (default=default)</p>
+
+<p>:return: True if successful</p>
+<h3 id='mediaplayseek-msec-tag'>mediaPlaySeek(msec, tag)</h3>
+<p>Seek To Position</p>
+
+<p>:param int msec: default true
+   :param str tag: string identifying resource (default=default)</p>
+
+<p>:return: New Position (in ms)</p>
+<h2 id='2002-get-information'>2002 Get Information</h2><h3 id='mediaplayinfo-tag'>mediaPlayInfo(tag)</h3>
+<p>Information on current media</p>
+
+<p>:param str tag: string identifying resource (default=default)</p>
+
+<p>:return: Media Information</p>
+<h3 id='mediaplaylist'>mediaPlayList()</h3>
+<p>Lists currently loaded media</p>
+
+<p>:return: List of Media Tags</p>
+<h1 id='21-preferencesfacade'>21 PreferencesFacade</h1><h2 id='preferences-apis'>Preferences APIs</h2><h3 id='prefgetvalue-key-filename'>prefGetValue(key, filename)</h3>
+<p>Read a value from shared preferences</p>
+
+<p>:param str key: key
+   :param str filename(optional): Desired preferences file. If not defined, uses the default Shared Preferences.</p>
+<h3 id='prefputvalue-key-value-filename'>prefPutValue(key, value, filename)</h3>
+<p>Write a value to shared preferences</p>
+
+<p>:param str key: key
+   :param str value: value
+   :param str filename(optional): Desired preferences file. If not defined, uses the default Shared Preferences.</p>
+<h3 id='prefgetall-filename'>prefGetAll(filename)</h3>
+<p>Get list of Shared Preference Values</p>
+
+<p>:param str filename(optional): Desired preferences file. If not defined, uses the default Shared Preferences.</p>
+<h1 id='22-qpyinterfacefacade'>22 QPyInterfaceFacade</h1><h2 id='2201-qpyinterface-apis'>2201 QPyInterface APIs</h2><h3 id='executeqpy-script'>executeQPy(script)</h3>
+<p>Execute a qpython script by absolute path</p>
+
+<p>:param str script: The absolute path of the qpython script</p>
+
+<p>:return: bool</p>
+<h1 id='23-texttospeechfacade'>23 TextToSpeechFacade</h1><h2 id='2301-tts-apis'>2301 TTS APIs</h2><h3 id='ttsspeak-message'>ttsSpeak(message)</h3>
+<p>Speaks the provided message via TTS</p>
+
+<p>:param str message: message</p>
+<h3 id='ttsisspeaking'>ttsIsSpeaking()</h3>
+<p>Returns True if speech is currently in progress</p>
+<h3 id='ttsspeak-message-2'>ttsSpeak(message)</h3>
+<p>Speaks the provided message via TTS</p>
+
+<p>:param str message: message</p>
+<h1 id='24-eyesfreefacade'>24 EyesFreeFacade</h1><h2 id='2401-eyesfree-apis'>2401 EyesFree APIs</h2><h1 id='25-bluetoothfacade'>25 BluetoothFacade</h1><h2 id='2501-bluetooth-apis'>2501 Bluetooth APIs</h2><h3 id='bluetoothactiveconnections'>bluetoothActiveConnections()</h3>
+<p>Returns active Bluetooth connections</p>
+<h3 id='bluetoothwritebinary-base64-connid'>bluetoothWriteBinary(base64, connID)</h3>
+<p>Send bytes over the currently open Bluetooth connection</p>
+
+<p>:param str base64: A base64 encoded String of the bytes to be sent
+   :param str connID(optional): Connection id</p>
+<h3 id='bluetoothreadbinary-buffersize-connid'>bluetoothReadBinary(bufferSize, connID)</h3>
+<p>Read up to bufferSize bytes and return a chunked, base64 encoded string</p>
+
+<p>:param int bufferSize: default 4096
+   :param str connID(optional): Connection id</p>
+<h3 id='bluetoothconnect-uuid-address'>bluetoothConnect(uuid, address)</h3>
+<p>Connect to a device over Bluetooth. Blocks until the connection is established or fails</p>
+
+<p>:param str uuid: The UUID passed here must match the UUID used by the server device
+   :param str address(optional): The user will be presented with a list of discovered devices to choose from if an address is not provided</p>
+
+<p>:return: True if the connection was established successfully</p>
+<h3 id='bluetoothaccept-uuid-timeout'>bluetoothAccept(uuid, timeout)</h3>
+<p>Listens for and accepts a Bluetooth connection. Blocks until the connection is established or fails</p>
+
+<p>:param str uuid: The UUID passed here must match the UUID used by the server device
+   :param int timeout: How long to wait for a new connection, 0 is wait for ever (default=0)</p>
+<h3 id='bluetoothmakediscoverable-duration'>bluetoothMakeDiscoverable(duration)</h3>
+<p>Requests that the device be discoverable for Bluetooth connections</p>
+
+<p>:param int duration: period of time, in seconds, during which the device should be discoverable (default=300)</p>
+<h3 id='bluetoothwrite-ascii-connid'>bluetoothWrite(ascii, connID)</h3>
+<p>Sends ASCII characters over the currently open Bluetooth connection</p>
+
+<p>:param str ascii: text
+   :param str connID: Connection id</p>
+<h3 id='bluetoothreadready-connid'>bluetoothReadReady(connID)</h3>
+<p>Sends ASCII characters over the currently open Bluetooth connection</p>
+
+<p>:param str ascii: text
+   :param str connID: Connection id</p>
+<h3 id='bluetoothread-buffersize-connid'>bluetoothRead(bufferSize, connID)</h3>
+<p>Read up to bufferSize ASCII characters</p>
+
+<p>:param int bufferSize: default=4096
+   :param str connID(optional): Connection id</p>
+<h3 id='bluetoothreadline-connid'>bluetoothReadLine(connID)</h3>
+<p>Read the next line</p>
+
+<p>:param str connID(optional): Connection id</p>
+<h3 id='bluetoothgetremotedevicename-address'>bluetoothGetRemoteDeviceName(address)</h3>
+<p>Queries a remote device for it&#39;s name or null if it can&#39;t be resolved</p>
+
+<p>:param str address: Bluetooth Address For Target Device</p>
+<h3 id='bluetoothgetlocalname'>bluetoothGetLocalName()</h3>
+<p>Gets the Bluetooth Visible device name</p>
+<h3 id='bluetoothsetlocalname-name'>bluetoothSetLocalName(name)</h3>
+<p>Sets the Bluetooth Visible device name, returns True on success</p>
+
+<p>:param str name: New local name</p>
+<h3 id='bluetoothgetscanmode'>bluetoothGetScanMode()</h3>
+<p>Gets the scan mode for the local dongle.
+   Return values:
+   -1 when Bluetooth is disabled.
+   0 if non discoverable and non connectable.
+   1 connectable non discoverable.
+   3 connectable and discoverable.</p>
+<h3 id='bluetoothgetconnecteddevicename-connid'>bluetoothGetConnectedDeviceName(connID)</h3>
+<p>Returns the name of the connected device</p>
+
+<p>:param str connID: Connection id</p>
+<h3 id='checkbluetoothstate'>checkBluetoothState()</h3>
+<p>Checks Bluetooth state</p>
+
+<p>:return: True if Bluetooth is enabled</p>
+<h3 id='togglebluetoothstate-enabled-prompt'>toggleBluetoothState(enabled, prompt)</h3>
+<p>Toggle Bluetooth on and off</p>
+
+<p>:param bool enabled:
+   :param str prompt: Prompt the user to confirm changing the Bluetooth state, default=true</p>
+
+<p>:return: True if Bluetooth is enabled</p>
+<h3 id='bluetoothstop-connid'>bluetoothStop(connID)</h3>
+<p>Stops Bluetooth connection</p>
+
+<p>:param str connID: Connection id</p>
+<h3 id='bluetoothgetlocaladdress'>bluetoothGetLocalAddress()</h3>
+<p>Returns the hardware address of the local Bluetooth adapter</p>
+<h3 id='bluetoothdiscoverystart'>bluetoothDiscoveryStart()</h3>
+<p>Start the remote device discovery process</p>
+
+<p>:return: true on success, false on error</p>
+<h3 id='bluetoothdiscoverycancel'>bluetoothDiscoveryCancel()</h3>
+<p>Cancel the current device discovery process</p>
+
+<p>:return: true on success, false on error</p>
+<h3 id='bluetoothisdiscovering'>bluetoothIsDiscovering()</h3>
+<p>Return true if the local Bluetooth adapter is currently in the device discovery process</p>
+<h1 id='26-signalstrengthfacade'>26 SignalStrengthFacade</h1><h2 id='2601-signalstreagth-apis'>2601 SignalStreagth APIs</h2><h3 id='starttrackingsignalstrengths'>startTrackingSignalStrengths()</h3>
+<p>Starts tracking signal strengths</p>
+<h3 id='readsignalstrengths'>readSignalStrengths()</h3>
+<p>Returns the current signal strengths</p>
+
+<p>:return: A map of gsm_signal_strength</p>
+<h3 id='stoptrackingsignalstrengths'>stopTrackingSignalStrengths()</h3>
+<p>Stops tracking signal strength</p>
+<h1 id='27-webcamfacade'>27 WebCamFacade</h1><h2 id='2701-webcam-apis'>2701 WebCam APIs</h2><h3 id='webcamstart-resolutionlevel-jpegquality-port'>webcamStart(resolutionLevel, jpegQuality, port)</h3>
+<p>Starts an MJPEG stream and returns a Tuple of address and port for the stream</p>
+
+<p>:param int resolutionLevel: increasing this number provides higher resolution (default=0)
+   :param int jpegQuality: a number from 0-10 (default=20)
+   :param int port: If port is specified, the webcam service will bind to port, otherwise it will pick any available port (default=0)</p>
+<h3 id='webcamadjustquality-resolutionlevel-jpegquality'>webcamAdjustQuality(resolutionLevel, jpegQuality)</h3>
+<p>Adjusts the quality of the webcam stream while it is running</p>
+
+<p>:param int resolutionLevel: increasing this number provides higher resolution (default=0)
+   :param int jpegQuality: a number from 0-10 (default=20)</p>
+<h3 id='camerastartpreview-resolutionlevel-jpegquality-filepath'>cameraStartPreview(resolutionLevel, jpegQuality, filepath)</h3>
+<p>Start Preview Mode. Throws &#39;preview&#39; events</p>
+
+<p>:param int resolutionLevel: increasing this number provides higher resolution (default=0)
+   :param int jpegQuality: a number from 0-10 (default=20)
+   :param str filepath: Path to store jpeg files</p>
+
+<p>:return: True if successful</p>
+<h3 id='camerastoppreview'>cameraStopPreview()</h3>
+<p>Stop the preview mode</p>
+<h1 id='28-uifacade'>28 UiFacade</h1><h2 id='2801-dialog'>2801 Dialog</h2><h3 id='dialogcreateinput-title-message-defaulttext-inputtype'>dialogCreateInput(title, message, defaultText, inputType)</h3>
+<p>Create a text input dialog</p>
+
+<p>:param str title: title of the input box
+   :param str message: message to display above the input box
+   :param str defaultText(optional): text to insert into the input box
+   :param str inputType(optional): type of input data, ie number or text</p>
+<h3 id='dialogcreatepassword-title-message'>dialogCreatePassword(title, message)</h3>
+<p>Create a password input dialog</p>
+
+<p>:param str title: title of the input box
+   :param str message: message to display above the input box</p>
+<h3 id='dialoggetinput-title-message-defaulttext'>dialogGetInput(title, message, defaultText)</h3>
+<p>Create a password input dialog</p>
+
+<p>:param str title: title of the input box
+   :param str message: message to display above the input box
+   :param str defaultText(optional): text to insert into the input box</p>
+<h3 id='dialoggetpassword-title-message'>dialogGetPassword(title, message)</h3>
+<p>Queries the user for a password</p>
+
+<p>:param str title: title of the password box
+   :param str message: message to display above the input box</p>
+<h3 id='dialogcreateseekbar-start-maximum-title'>dialogCreateSeekBar(start, maximum, title)</h3>
+<p>Create seek bar dialog</p>
+
+<p>:param int start: default=50
+   :param int maximum: default=100
+   :param int title: title</p>
+<h3 id='dialogcreatetimepicker-hour-minute-is24hour'>dialogCreateTimePicker(hour, minute, is24hour)</h3>
+<p>Create time picker dialog</p>
+
+<p>:param int hour: default=0
+   :param int miute: default=0
+   :param bool is24hour: default=false</p>
+<h3 id='dialogcreatedatepicker-year-month-day'>dialogCreateDatePicker(year, month, day)</h3>
+<p>Create date picker dialog</p>
+
+<p>:param int year: default=1970
+   :param int month: default=1
+   :param int day: default=1</p>
+<h2 id='2802-nfc'>2802 NFC</h2>
+<p><strong>Data structs</strong>
+<em>QPython NFC json result</em>
+::</p>
+
+<p>{
+    &quot;role&quot;: <role>, # could be self/master/slave
+    &quot;stat&quot;: <stat>, # could be ok / fail / cancl
+    &quot;message&quot;: <message get> 
+    }</p>
+<h3 id='dialogcreatenfcbeammaster-title-message-inputtype'>dialogCreateNFCBeamMaster(title, message, inputType)</h3>
+<p>Create a dialog where you could create a qpython beam master</p>
+
+<p>:param str title: title of the input box
+   :param str message: message to display above the input box
+   :param str inputType(optional): type of input data, ie number or text</p>
+<h3 id='nfcbeammessage-content-title-message'>NFCBeamMessage(content, title, message)</h3>
+<p>Create a dialog where you could create a qpython beam master</p>
+
+<p>:param str content: message you want to sent
+   :param str title: title of the input box
+   :param str message: message to display above the input box
+   :param str inputType(optional): type of input data, ie number or text</p>
+<h3 id='dialogcreatenfcbeamslave-title-message'>dialogCreateNFCBeamSlave(title, message)</h3>
+<p>Create a qpython beam slave</p>
+
+<p>:param str title: title of the input box
+   :param str message: message to display above the input box</p>
+<h2 id='2803-progress'>2803 Progress</h2><h3 id='dialogcreatespinnerprogress-message-maximumprogress'>dialogCreateSpinnerProgress(message, maximumProgress)</h3>
+<p>Create a spinner progress dialog</p>
+
+<p>:param str message(optional): message
+   :param int maximunProgress(optional): dfault=100</p>
+<h3 id='dialogsetcurrentprogress-current'>dialogSetCurrentProgress(current)</h3>
+<p>Set progress dialog current value</p>
+
+<p>:param int current: current</p>
+<h3 id='dialogsetmaxprogress-max'>dialogSetMaxProgress(max)</h3>
+<p>Set progress dialog maximum value</p>
+
+<p>:param int max: max</p>
+<h3 id='dialogcreatehorizontalprogress-title-message-maximumprogress'>dialogCreateHorizontalProgress(title, message, maximumProgress)</h3>
+<p>Create a horizontal progress dialog</p>
+
+<p>:param str title(optional): title
+   :param str message(optional): message
+   :param int maximunProgress(optional): dfault=100</p>
+<h2 id='2804-alert'>2804 Alert</h2><h3 id='dialogcreatealert-title-message'>dialogCreateAlert(title, message)</h3>
+<p>Create alert dialog</p>
+
+<p>:param str title(optional): title
+   :param str message(optional): message
+   :param int maximunProgress(optional): dfault=100</p>
+<h2 id='2805-dialog-control'>2805 Dialog Control</h2><h3 id='dialogsetpositivebuttontext-text'>dialogSetPositiveButtonText(text)</h3>
+<p>Set alert dialog positive button text</p>
+
+<p>:param str text: text</p>
+<h3 id='dialogsetnegativebuttontext-text'>dialogSetNegativeButtonText(text)</h3>
+<p>Set alert dialog negative button text</p>
+
+<p>:param str text: text</p>
+<h3 id='dialogsetneutralbuttontext-text'>dialogSetNeutralButtonText(text)</h3>
+<p>Set alert dialog button text</p>
+
+<p>:param str text: text</p>
+<h3 id='dialogsetitems-items'>dialogSetItems(items)</h3>
+<p>Set alert dialog list items</p>
+
+<p>:param list items: items</p>
+<h3 id='dialogsetsinglechoiceitems-items-selected'>dialogSetSingleChoiceItems(items, selected)</h3>
+<p>Set alert dialog list items</p>
+
+<p>:param list items: items
+   :param int selected: selected item index (default=0)</p>
+<h3 id='dialogsetmultichoiceitems-items-selected'>dialogSetMultiChoiceItems(items, selected)</h3>
+<p>Set dialog multiple choice items and selection</p>
+
+<p>:param list items: items
+   :param int selected: selected item index (default=0)</p>
+<h3 id='addcontextmenuitem-label-event-eventdata'>addContextMenuItem(label, event, eventData)</h3>
+<p>Adds a new item to context menu</p>
+
+<p>:param str label: label for this menu item
+   :param str event: event that will be generated on menu item click
+   :param object eventData: event object</p>
+<h3 id='addoptionsmenuitem-label-event-eventdata-iconname'>addOptionsMenuItem(label, event, eventData, iconName)</h3>
+<p>Adds a new item to context menu</p>
+
+<p>:param str label: label for this menu item
+   :param str event: event that will be generated on menu item click
+   :param object eventData: event object
+   :param str iconName: Android system menu icon, see http://developer.android.com/reference/android/R.drawable.html</p>
+<h3 id='dialoggetresponse'>dialogGetResponse()</h3>
+<p>Returns dialog response</p>
+<h3 id='dialoggetselecteditems'>dialogGetSelectedItems()</h3>
+<p>This method provides list of items user selected</p>
+<h3 id='dialogdismiss'>dialogDismiss()</h3>
+<p>Dismiss dialog</p>
+<h3 id='dialogshow'>dialogShow()</h3>
+<p>Show dialog</p>
+<h2 id='2806-layout'>2806 Layout</h2><h3 id='fullshow-layout'>fullShow(layout)</h3>
+<p>Show Full Screen</p>
+
+<p>:param string layout: String containing View layout</p>
+<h3 id='fulldismiss'>fullDismiss()</h3>
+<p>Dismiss Full Screen</p>
+<h3 id='fullquery'>fullQuery()</h3>
+<p>Get Fullscreen Properties</p>
+<h3 id='fullquerydetail-id'>fullQueryDetail(id)</h3>
+<p>Get fullscreen properties for a specific widget</p>
+
+<p>:param str id: id of layout widget</p>
+<h3 id='fullsetproperty-id'>fullSetProperty(id)</h3>
+<p>Set fullscreen widget property</p>
+
+<p>:param str id: id of layout widget
+   :param str property: name of property to set
+   :param str value: value to set property to</p>
+<h3 id='fullsetlist-id-list'>fullSetList(id, list)</h3>
+<p>Attach a list to a fullscreen widget</p>
+
+<p>:param str id: id of layout widget
+   :param list list: List to set</p>
+<h3 id='fullkeyoverride-keycodes-enable'>fullKeyOverride(keycodes, enable)</h3>
+<p>Override default key actions</p>
+
+<p>:param str keycodes: id of layout widget
+   :param bool enable: List to set (default=true)</p>
+<h2 id='2807-webview'>2807 WebView</h2><h3 id='webviewshow'>webViewShow()</h3>
+<p>Display a WebView with the given URL</p>
+
+<p>:param str url: url
+   :param bool wait(optional): block until the user exits the WebView</p>
+<h1 id='29-usb-host-serial-facade'>29 USB Host Serial Facade</h1>
+<p>SL4A Facade for USB Serial devices by Android USB Host API.</p>
+
+<p>It control the USB-Serial like devices
+from Andoroid which has USB Host Controller .</p>
+
+<p>The sample
+<code>demonstration is also available at youtube video &lt;http://www.youtube.com/watch?v=EJ7qiGXaI74&gt;</code>_</p>
+<h2 id='requirements'>Requirements</h2>
+<ul>
+<li>Android device which has USB Host controller (and enabled in that firmware).</li>
+<li>Android 4.0 (API14) or later.</li>
+<li>USB Serial devices (see <a href="#Status">Status</a>).</li>
+<li>USB Serial devices were not handled by Android kernel.</li>
+</ul>
+
+<blockquote>
+<p>I heard some android phone handle USB Serial devices
+make /dev/ttyUSB0 in kernel level.
+In this case, Android does not be able to handle the device
+from OS level.</p>
+</blockquote>
+
+<p>please check Android Applications be able to grab the target USB Devices,
+  such as <code>USB Device Info &lt;https://play.google.com/store/apps/details?id=aws.apps.usbDeviceEnumerator&gt;</code>_.</p>
+
+<p>Status</p>
+
+<ul>
+<li><p>probably work with USB CDC, like FTDI, Arduino or else.</p></li>
+<li><p>2012/09/10: work with 78K0F0730 device (new RL78) with Tragi BIOS board.</p></li>
+</ul>
+
+<p><code>M78K0F0730 &lt;http://www.marutsu.co.jp/shohin_55296/&gt;</code>_</p>
+
+<ul>
+<li>2012/09/24: work with some pl2303 devcies.</li>
+</ul>
+
+<p>Author</p>
+
+<p>This facade developped by <code>Kuri65536 &lt;https://bitbucket.org/kuri65536/usbhostserialfacade&gt;</code>_
+you can see the commit log in it.</p>
+<h2 id='2901-usb-host-serial-apis'>2901 USB Host Serial APIs</h2><h3 id='usbserialgetdevicelist'>usbserialGetDeviceList()</h3>
+<p>Returns USB devices reported by USB Host API.</p>
+
+<p>:return: Returns &quot;Map of id and string information Map<String, String></p>
+<h3 id='usbserialdisconnect-connid'>usbserialDisconnect(connID)</h3>
+<p>Disconnect all USB-device</p>
+
+<p>:param str connID: connection ID</p>
+<h3 id='usbserialactiveconnections'>usbserialActiveConnections()</h3>
+<p>Returns active USB-device connections.</p>
+
+<p>:return: Returns &quot;Active USB-device connections by Map UUID vs device-name.&quot;</p>
+<h3 id='usbserialwritebinary-base64-connid'>usbserialWriteBinary(base64, connID)</h3>
+<p>Send bytes over the currently open USB Serial connection.</p>
+
+<p>:param str base64:
+   :param str connId:</p>
+<h3 id='usbserialreadbinary-buffersize-connid'>usbserialReadBinary(bufferSize, connID)</h3>
+<p>Read up to bufferSize bytes and return a chunked, base64 encoded string</p>
+
+<p>:param int bufferSize:
+   :param str connId:</p>
+<h3 id='usbserialconnect-hash-options'>usbserialConnect(hash, options)</h3>
+<p>Connect to a device with USB-Host. request the connection and exit</p>
+
+<p>:param str hash:
+   :param str options:</p>
+
+<p>:return: Returns messages the request status</p>
+<h3 id='usbserialhostenable'>usbserialHostEnable()</h3>
+<p>Requests that the host be enable for USB Serial connections.</p>
+
+<p>:return: True if the USB Device is accesible</p>
+<h3 id='usbserialwrite-string-ascii-string-connid'>usbserialWrite(String ascii, String connID)</h3>
+<p>Sends ASCII characters over the currently open USB Serial connection</p>
+
+<p>:param str ascii:
+   :param str connID:</p>
+<h3 id='usbserialreadready-connid'>usbserialReadReady(connID)</h3>
+<p>:param str connID:</p>
+
+<p>:return: True if the next read is guaranteed not to block</p>
+<h3 id='usbserialread-connid-buffersize'>usbserialRead(connID, bufferSize)</h3>
+<p>Read up to bufferSize ASCII characters.</p>
+
+<p>:param str connID:
+   :param int bufferSize:</p>
+<h3 id='usbserialgetdevicename-connid'>usbserialGetDeviceName(connID)</h3>
+<p>Queries a remote device for it&#39;s name or null if it can&#39;t be resolved</p>
+
+<p>:param str connID:</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="python">python</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
