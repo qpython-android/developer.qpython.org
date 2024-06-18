@@ -83,8 +83,10 @@ AIPY | Sympy | 1.12 | Python library for symbolic computation
 
 # 03 - QSL4A APIs
 
+The Scripting Layer for Android (abridged as SL4A, and previously named Android Scripting Environment or ASE) is a library that allows the creation and running of scripts written in various scripting languages directly on Android devices. QPython start to extend the SL4A project and integrate it.
 
-## QSL4A
+
+There are many SL4A APIs, if you found any issue, please `report an issue <https://github.com/qpython-android/qpython/issues>`_.
 
 <a href='qsl4a.html'>Read QSL4A's APIs >></a>
 
