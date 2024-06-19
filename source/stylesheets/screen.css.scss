@@ -262,7 +262,7 @@ html, body {
   // half of the content always this background color.
   .dark-box {
     width: $examples-width;
-    background-color: $examples-bg;
+    //background-color: $examples-bg;
     position: absolute;
     right: 0;
     top: 0;
@@ -272,14 +272,14 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    background: $drac-light-bg;
+    //background: $drac-light-bg;
     padding: 1em 28px;
   }
 }
 
 .lang-selector {
-  display: flex;
-  background-color: $lang-select-bg;
+  display: none;
+  //background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
   overflow-x: auto;
